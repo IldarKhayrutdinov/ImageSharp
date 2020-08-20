@@ -279,5 +279,39 @@ namespace SixLabors.ImageSharp.Tests
 
             public static readonly string[] All = { Rings, Giphy, Cheers, Trans, Kumin, Leo, Ratio4x1, Ratio1x4 };
         }
+
+        public static class Tiff
+        {
+            public const string GrayscaleDeflateMultistrip = "Tiff/grayscale_deflate_multistrip.tiff";
+            public const string GrayscaleUncompressed = "Tiff/grayscale_uncompressed.tiff";
+            public const string PaletteDeflateMultistrip = "Tiff/palette_grayscale_deflate_multistrip.tiff";
+            public const string PaletteUncompressed = "Tiff/palette_uncompressed.tiff";
+            public const string RgbDeflate = "Tiff/rgb_deflate.tiff";
+            public const string RgbDeflateMultistrip = "Tiff/rgb_deflate_multistrip.tiff";
+            public const string RgbJpeg = "Tiff/rgb_jpeg.tiff";
+            public const string RgbLzw = "Tiff/rgb_lzw.tiff";
+            public const string RgbLzwMultistrip = "Tiff/rgb_lzw_multistrip.tiff";
+            public const string RgbPackbits = "Tiff/rgb_packbits.tiff";
+            public const string RgbPackbitsMultistrip = "Tiff/rgb_packbits_multistrip.tiff";
+            public const string RgbUncompressed = "Tiff/rgb_uncompressed.tiff";
+
+            public const string RgbUncompressedTiled = "Tiff/rgb_uncompressed_tiled.tiff";
+            public const string MultiframeDifferentSizeTiled = "Tiff/multipage_ withPreview_differentSize_tiled.tiff";
+
+            public const string MultiframeLzw = "Tiff/multipage_lzw.tiff";
+            public const string MultiframeDeflateWithPreview = "Tiff/multipage_deflate_withPreview.tiff";
+            public const string MultiframeDifferentSize = "Tiff/multipage_differentSize.tiff";
+            public const string MultiframeDifferentVariants = "Tiff/multipage_differentVariants.tiff";
+
+            public const string SampleMetadata = "Tiff/metadata_sample.tiff";
+
+            public static readonly string[] All = { GrayscaleDeflateMultistrip, GrayscaleUncompressed, PaletteDeflateMultistrip, PaletteUncompressed, RgbDeflate, RgbDeflateMultistrip, /*RgbJpeg,*/ RgbLzw, RgbLzwMultistrip, RgbPackbits, RgbPackbitsMultistrip, RgbUncompressed, MultiframeLzw, /*MultiFrameDifferentVariants,*/ SampleMetadata, };
+
+            public static readonly string[] Multiframes = { MultiframeLzw, MultiframeDeflateWithPreview /*MultiFrameDifferentSize, MultiframeDifferentSizeTiled, MultiFrameDifferentVariants,*/ };
+
+            public static readonly string[] Metadata = { SampleMetadata };
+
+            public static readonly string[] NotSupported = { RgbJpeg, RgbUncompressedTiled, MultiframeDifferentSize, MultiframeDifferentVariants };
+        }
     }
 }
