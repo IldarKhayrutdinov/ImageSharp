@@ -5,10 +5,10 @@ namespace SixLabors.ImageSharp.Tests
 {
     using System;
     using System.IO;
+    using ImageSharp.Formats.Tiff;
     using Xunit;
 
-    using ImageSharp.Formats.Tiff;
-
+    [Trait("Category", "Tiff")]
     public class SubStreamTests
     {
         [Fact]
