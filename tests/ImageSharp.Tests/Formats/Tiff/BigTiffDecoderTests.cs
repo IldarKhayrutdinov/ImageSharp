@@ -5,6 +5,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using SixLabors.ImageSharp.Formats.Tiff;
 using SixLabors.ImageSharp.Metadata;
 using SixLabors.ImageSharp.Metadata.Profiles.Exif;
 using SixLabors.ImageSharp.PixelFormats;
@@ -125,5 +126,32 @@ namespace SixLabors.ImageSharp.Tests.Formats.Tiff
             Assert.Equal(1, meta.Values.Count(v => (ushort)v.Tag == (ushort)ExifTagValue.StripOffsets));
             Assert.Equal(1, meta.Values.Count(v => (ushort)v.Tag == (ushort)ExifTagValue.StripByteCounts));
         }
+
+        [Theory]
+        [WithFile(SampleMetadata, PixelTypes.Rgba32, false)]
+        [WithFile(SampleMetadata, PixelTypes.Rgba32, true)]
+        public void MetadataProfiles<TPixel>(TestImageProvider<TPixel> provider, bool ignoreMetadata)
+            where TPixel : unmanaged, IPixel<TPixel>
+        {
+            using (Image<TPixel> image = provider.GetImage(new TiffDecoder() { IgnoreMetadata = ignoreMetadata }))
+            {
+                TiffMetadata meta = image.Metadata.GetTiffMetadata();
+                ImageFrameMetadata rootFrameMetaData = image.Frames.RootFrame.Metadata;
+                Assert.NotNull(meta);
+                if (ignoreMetadata)
+                {
+                    Assert.Null(rootFrameMetaData.XmpProfile);
+                    Assert.Null(rootFrameMetaData.ExifProfile);
+                }
+                else
+                {
+                    Assert.NotNull(rootFrameMetaData.XmpProfile);
+                    Assert.NotNull(rootFrameMetaData.ExifProfile);
+                    Assert.Equal(2599, rootFrameMetaData.XmpProfile.Length);
+                    Assert.Equal(26, rootFrameMetaData.ExifProfile.Values.Count);
+                }
+            }
+        }
+
     }
 }

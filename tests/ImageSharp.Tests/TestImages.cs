@@ -695,6 +695,8 @@ namespace SixLabors.ImageSharp.Tests
             public const string MinIsBlack = Base + "BigTIFF_MinIsBlack.tif";
             public const string MinIsWhite = Base + "BigTIFF_MinIsWhite.tif";
 
+            public const string SampleMetadata = "Tiff/metadata_sample_big.tiff";
+
             public const string Damaged_MinIsWhite_RLE = Base + "BigTIFF_MinIsWhite_RLE.tif";
             public const string Damaged_MinIsBlack_RLE = Base + "BigTIFF_MinIsBlack_RLE.tif";
         }
